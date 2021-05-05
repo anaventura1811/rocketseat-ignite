@@ -1,6 +1,8 @@
 import { RepositoryItem } from "./RepositoryItem";
 import '../styles/repositories.scss';
+import { useState } from 'react';
 
+// https://api.github.com/users/anaventura1811/repos
 const repository = {
   name: 'unform',
   description: 'Forms in React',
@@ -8,6 +10,8 @@ const repository = {
 }
 
 export default function RepositoryList() {
+  const [] = useState([]) // sempre que é uma lista, começar o vetor do estado com array vazio
+
   return (
     <section className="repository-list">
       <h1>Lista de repositórios</h1>
