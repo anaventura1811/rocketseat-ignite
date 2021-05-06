@@ -6,9 +6,16 @@ import { useState, useEffect } from 'react';
 
 // Hooks React:  sobre useEffect --> serve pra disparar uma função quando algo acontecer na minha aplicação
 
+// Tipar estado/ checagem de tipos para o estado:
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
 export default function RepositoryList() {
-  const [repositories, setRepositories] = useState([]) // sempre que é uma lista, começar o vetor do estado com array vazio
-  
+  const [repositories, setRepositories] = useState<Repository[]>([]) // sempre que é uma lista, começar o vetor do estado com array vazio
+                                                  // indica uma lista de repositórios
   useEffect(() => {
     fetch('https://api.github.com/users/anaventura1811/repos')
     .then(response => response.json())
@@ -24,7 +31,7 @@ export default function RepositoryList() {
       <h1>Lista de repositórios</h1>
 
       <ul>
-        {repositories.map((repository) => ( <RepositoryItem key={repository.name} repository={repository} /> ))}
+        {repositories.map(repository => ( <RepositoryItem key={repository.name} repository={repository} /> ))}
        
       </ul>
     </section>
